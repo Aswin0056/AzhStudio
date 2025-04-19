@@ -1,0 +1,483 @@
+/* src/styles.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+  }
+  
+  /* styles.css */
+
+/* Navbar default (desktop) */
+.navbar-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-right: 2rem;
+  }
+
+.navbar-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-links a:hover{
+    color: goldenrod;
+}
+  
+  .navbar-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: black;
+  }
+  
+  .navbar-dropdown {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 999;
+  }
+  
+  .navbar-dropdown a {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .navbar-dropdown a:hover {
+    background-color: #f3f4f6;
+    color: goldenrod;
+  }
+ 
+  
+  /* styles.css */
+
+/* Home page styling */
+.home-container {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .home-title {
+    font-size: 2rem; /* Tailwind's text-3xl */
+    font-weight: bold;
+    color: #1f2937; /* Slate-800 */
+  }
+  
+  .home-subtitle {
+    margin-top: 1rem;
+    color: #4b5563; /* Tailwind's text-gray-600 */
+    font-size: 1rem;
+  }
+
+  .card-dec{
+    text-decoration: none;
+    color: black;
+  }
+  
+
+  /* styles.css */
+
+/* Premium Login Page Styling */
+.login-form {
+    padding: 2rem 2.5rem;
+    max-width: 420px;
+    margin: 4rem auto;
+    background: linear-gradient(to bottom right, #ffffff, #f9fafb);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .login-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+  }
+  
+  .login-input {
+    width: 91%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9fafb;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .login-input:focus {
+    outline: none;
+    border-color: #f59e0b;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(to right, #f59e0b, #d97706);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+  }
+  
+  .error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  
+  /* styles.css */
+
+/* Premium Register Page Styling */
+.register-form {
+    padding: 2rem 2.5rem;
+    max-width: 420px;
+    margin: 1rem auto;
+    background: linear-gradient(to bottom right, #ffffff, #f9fafb);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .register-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+  }
+  
+  .register-input {
+    width: 91%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9fafb;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .register-input:focus {
+    outline: none;
+    border-color: #f59e0b;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+  
+  .register-button {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(to right, #f59e0b, #d97706);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+  }
+  
+  .error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .owner-label{
+    font-size: 0.6rem;
+    text-align: center;
+    color: grey;
+    span{
+        color: goldenrod;
+    }
+  }
+  
+
+/* Container for the whole dashboard */
+.dashboard-container {
+    padding: 2rem;
+    background-color: #f9fafb;
+  }
+  
+  /* Styling for the form that adds a new project */
+  .project-form {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 20%;
+  }
+  
+  /* Input styling for the form */
+  .project-form input {
+    width: 91%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  /* Button styling */
+  .project-form button {
+    background-color: goldenrod;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .project-form button:hover {
+    background-color: gold;
+  }
+  
+  /* Card layout for the projects */
+  .project-card {
+    border-radius: 10px;
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .project-card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  .project-card p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-top: 0.5rem;
+  }
+  
+  .project-card .project-link {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    color: #1f40af;
+    text-decoration: underline;
+  }
+  
+  .project-card .status {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .project-card .status.up {
+    color: green;
+  }
+  
+  .project-card .status.down {
+    color: red;
+  }
+  
+  .project-card .command-box {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+  
+  .project-card .user-count {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1f2937;
+  }
+  
+  /* Dashboard title and username */
+  .dashboard-header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #111827;
+  }
+  
+  .dashboard-welcome {
+    font-size: 1.25rem;
+    color: #6b7280;
+  }
+  
+  /* Layout for the projects */
+  .project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .project-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Media Queries for responsiveness */
+
+/* For tablets and small screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .project-form {
+        width: 40%;
+    }
+
+    .project-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .dashboard-header {
+        font-size: 1.75rem;
+    }
+
+    .dashboard-welcome {
+        font-size: 1.125rem;
+    }
+
+    .project-card img {
+        height: 160px;
+    }
+}
+
+/* For mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .project-form {
+        width: 90%;
+    }
+
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-welcome {
+        font-size: 1rem;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+
+    .project-card img {
+        height: 140px;
+    }
+}
+  
+
+  /* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+    .login-form,
+    .register-form {
+      padding: 1.5rem;
+      margin: 2rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .login-form img{
+        margin-top: 0px;
+    }
+  
+    .login-title,
+    .register-title {
+      font-size: 1.5rem;
+      padding-bottom: 0.75rem;
+    }
+  
+    .login-input,
+    .register-input {
+      width: 91%;
+      font-size: 0.95rem;
+      padding: 0.65rem 0.9rem;
+    }
+  
+    .login-button,
+    .register-button {
+      padding: 0.65rem;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+    .home-title {
+      font-size: 1.5rem;
+    }
+  
+    .home-subtitle {
+      font-size: 0.95rem;
+    }
+  }
+  
+   
+  /* Mobile screen styles */
+  @media screen and (max-width: 768px) {
+    .navbar-links {
+      display: none;
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  
+    .navbar-dropdown.show {
+      display: flex;
+    }
+  }
