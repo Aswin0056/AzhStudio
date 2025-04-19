@@ -148,15 +148,72 @@ body {
     box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
   }
   
+  .floating-success {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #10b981; /* emerald-500 */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
+    pointer-events: none;
+  }
+
+  .floating-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(190, 36, 36, 0.733); /* emerald-500 */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
+    pointer-events: none;
+  }
+  
+  
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  
+  @keyframes fadeout {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  
   .error-message {
     background-color: #fee2e2;
     color: #b91c1c;
-    padding: 0.75rem;
+    padding: 10px;
     margin-bottom: 1rem;
     border-radius: 8px;
     text-align: center;
-    font-size: 0.95rem;
+    font-weight: bold;
   }
+  
   
   /* styles.css */
 

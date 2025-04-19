@@ -22,7 +22,7 @@ export default function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/register", {
+      const response = await axios.post("https://studio-bd.onrender.com/api/auth/register", {
         username,
         email,
         password,
@@ -43,7 +43,7 @@ export default function Register() {
     <form onSubmit={handleRegister} className="register-form">   
     <center><img src={logo} alt="Azh Studio Logo" style={{ width: "100px"}} /></center>  
       <h2 className="register-title">Register</h2>
-      {error && <div className="error-message">{error}</div>}
+      {error && <div className="floating-error">{error}</div>}
       <input
         className="register-input"
         type="text"

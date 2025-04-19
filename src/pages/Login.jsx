@@ -8,38 +8,56 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState(""); // ✅ added
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://studio-bd.onrender.com/api/login",
+        {
+          email,
+          password,
+        }
+      );
 
       const { token, user } = response.data;
 
-      // Store token in localStorage
+      // Store token and username
       localStorage.setItem("token", token);
-      localStorage.setItem("username", user.username); // Save username to localStorage
+      localStorage.setItem("username", user.username);
 
-      alert("Logged in successfully!");
-      navigate("/dashboard"); // Navigate directly to the dashboard
+      setSuccessMessage("Logged in successfully ✅"); // ✅ show success
+      setError("");
+
+      // Redirect after short delay
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
     } catch (err) {
-      setError("Invalid email or password");
+      setError("Invalid email or password ❌");
+      setSuccessMessage(""); // clear any previous success
     }
   };
 
- 
   return (
     <form onSubmit={handleLogin} className="login-form">
       <center>
         <img src={logo} alt="Azh Studio Logo" style={{ width: "100px" }} />
       </center>
       <h2 className="login-title">Login</h2>
-      {error && <div className="error-message">{error}</div>}
+
+      {/* Message boxes */}
+      {error && <div className="floating-error">{error}</div>}
+     {successMessage && (
+  <div className="floating-success">
+    {successMessage}
+  </div>
+)}
+
+
       <input
         className="login-input"
         type="email"

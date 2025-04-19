@@ -23,7 +23,7 @@ export default function Dashboard() {
 
     const fetchProjects = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/projects");
+        const res = await axios.get("https://studio-bd.onrender.com/api/projects");
         setProjects(res.data.projects);
       } catch (err) {
         console.error("Error fetching projects", err);
@@ -41,9 +41,9 @@ export default function Dashboard() {
   const handleAddProject = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/projects", newProject);
+      await axios.post("https://studio-bd.onrender.com/api/projects", newProject);
       setNewProject({ name: "", description: "", imageUrl: "", link: "" });
-      const res = await axios.get("http://localhost:5000/api/projects");
+      const res = await axios.get("https://studio-bd.onrender.com/api/projects");
       setProjects(res.data.projects);
     } catch (err) {
       console.error("Error adding project", err);
