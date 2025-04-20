@@ -11,7 +11,7 @@ export default function Footer() {
       }}>
         <p>© {new Date().getFullYear()} Azh Studio. All rights reserved.</p>
         <p style={{ fontSize: "0.9rem", opacity: 0.7 }}>
-          Built by Aswin with 💙 & creativity.
+          Built by Aswin with 🤍 & creativity.
         </p>
       </footer>
     );
