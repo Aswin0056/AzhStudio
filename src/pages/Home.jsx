@@ -51,7 +51,7 @@ export default function Home() {
 
         {/* Aswin's AI Card */}
         <div style={cardStyle}>
-        <a href="https://la-our-ai.netlify.app/" className="card-dec" target="_blank" rel="noopener noreferrer">
+        <a href="https://lix-ai.netlify.app/" className="card-dec" target="_blank" rel="noopener noreferrer">
           <h3>🤖 Aswin's AI</h3>
           <img src={AI} alt="Aswin's AI Logo" style={{ width: "100px", margin: "1rem 0" }} /></a>
           <p>
