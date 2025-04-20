@@ -55,7 +55,7 @@ export default function Home() {
           <h3>🤖 LIX</h3>
           <img src={AI} alt="Aswin's AI Logo" style={{ width: "100px", margin: "1rem 0" }} /></a>
           <p>
-            A conversational AI assistant with handcrafted replies and Google search fallback. Features
+            A Personal AI assistant with handcrafted replies and Google search fallback. Features
             dark mode, typing animations, and a clean UI.
           </p>
         </div>
