@@ -8,6 +8,7 @@ export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [projects, setProjects] = useState([]);
   const [projectSuccessMsg, setProjectSuccessMsg] = useState("");
+  const [projectDeleteMsg, setProjectDeleteMsg] = useState("");
   const [newProject, setNewProject] = useState({
     name: "",
     imageUrl: "",
@@ -32,9 +33,45 @@ export default function Dashboard() {
       console.error("Error fetching projects", err);
     }
   };
-  
-  
 
+  const [reminderText, setReminderText] = useState("");
+  const [reminderSuccessMsg, setReminderSuccessMsg] = useState("");
+  
+  // Fetch the reminder on load
+  useEffect(() => {
+    const fetchReminder = async () => {
+      try {
+        const res = await axios.get("https://studio-bd.onrender.com/api/reminder");
+        setReminderText(res.data.reminder.reminder_text || "");
+      } catch (err) {
+        console.error("Error fetching reminder", err);
+      }
+    };
+  
+    fetchReminder();
+  }, []);
+  
+  const handleReminderChange = (e) => {
+    setReminderText(e.target.value);
+  };
+  
+  const handleAddReminder = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("https://studio-bd.onrender.com/api/reminder", {
+        text: reminderText,
+      });
+      
+      setReminderText("");
+      setReminderSuccessMsg("✅ Reminder added successfully!");
+      setTimeout(() => setReminderSuccessMsg(""), 2000);
+    } catch (error) {
+      console.error("Error adding reminder:", error);
+      alert("Failed to add reminder.");
+    }
+  };
+  
+  
   
 const handleQAChange = (e) => {
   const { name, value } = e.target;
@@ -73,17 +110,24 @@ const handleProjectChange = (e) => {
 
 const checkStatus = async (link) => {
   try {
-    const res = await fetch(link, { method: "GET", timeout: 3000 });
-    return res.ok ? "online" : "offline";
-  } catch {
+    const res = await axios.get(`${link}/api/ping`, { timeout: 5000 });
+    console.log("Response from backend:", res.data);  // Log backend response
+    return res.data.message === "pong" ? "online" : "offline";
+  } catch (err) {
+    console.error("Error during ping check:", err);  // Log the error
     return "offline";
   }
 };
 
+
+
 const handleAddProject = async (e) => {
   e.preventDefault(); // Prevent page refresh
 
-  const status = await checkStatus(newProject.link);
+  // Temporarily show "checking"
+  setProjectSuccessMsg("⏳ Checking project status...");
+
+  const status = await checkStatus(newProject.link, setProjectSuccessMsg); // Adjust call if you want message here
   console.log('Link status:', status); // Log link status
 
   const newEntry = {
@@ -115,10 +159,11 @@ const handleDeleteProject = async (id) => {
   try {
     await axios.delete(`https://studio-bd.onrender.com/api/projects/${id}`);
     setProjects(projects.filter((project) => project.id !== id));
-    alert("🗑️ Project deleted successfully!");
+    setProjectDeleteMsg("🗑️ Project deleted successfully!"); // Success message
   } catch (err) {
     console.error("Error deleting project", err);
     alert("❌ Failed to delete project.");
+   
   }
 };
 
@@ -138,13 +183,28 @@ fetchProjects();
 
   return (
     <div className="dashboard-container">
+     {/* Display Success Message if set */}
+     {reminderSuccessMsg && (
+        <p className="floating-success">{reminderSuccessMsg}</p>
+      )}
+      {/* Reminder Section */}
+      <form onSubmit={handleAddReminder}>
+  <textarea
+    value={reminderText}
+    onChange={handleReminderChange}
+    placeholder="Enter your reminder"
+    required
+  />
+  <button type="submit" className="reminder-submit">
+    Add Reminder
+  </button>
+</form>
+
+
       <h2 className="dashboard-header">Dashboard</h2>
       <p className="dashboard-welcome">Welcome, {username}!</p>
-      {projectSuccessMsg && (
-  <p className="floating-success">
-    {projectSuccessMsg}
-  </p>
-)}
+      {projectSuccessMsg && (<p className="floating-success">{projectSuccessMsg}</p>)}
+      {projectDeleteMsg && (<p className="floating-error">{projectDeleteMsg}</p>)}
 
       {/* ✅ AI Q&A Input Section */}
       <form onSubmit={handleAddQA} className="project-form">
@@ -192,9 +252,14 @@ fetchProjects();
       className="project-card img" 
     />
     <h3 className="project-card h3">{project.name}</h3>
-    <p className={`ping-status ${project.status === "online" ? "online" : "offline"}`}>
-      Status: {project.status === "online" ? "Online" : "Offline"}
-    </p>
+    <p className={`ping-status ${project.status}`}>
+  Status: {project.status === "online" 
+    ? "Online" 
+    : project.status === "offline" 
+      ? "Offline" 
+      : "Checking..."}
+</p>
+
     <button onClick={() => handleDeleteProject(project.id)} className="delete-button">
   Delete
 </button>
