@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 import '../styles.css';
 
@@ -9,6 +10,10 @@ export default function Dashboard() {
   const [projects, setProjects] = useState([]);
   const [projectSuccessMsg, setProjectSuccessMsg] = useState("");
   const [projectDeleteMsg, setProjectDeleteMsg] = useState("");
+  const [reminderText, setReminderText] = useState("");
+  const [reminderSuccessMsg, setReminderSuccessMsg] = useState("");
+  const [reminderErrorMsg, setReminderErrorMsg] = useState("");
+  const [reminderEditMode, setReminderEditMode] = useState(false);
   const [newProject, setNewProject] = useState({
     name: "",
     imageUrl: "",
@@ -34,8 +39,7 @@ export default function Dashboard() {
     }
   };
 
-  const [reminderText, setReminderText] = useState("");
-  const [reminderSuccessMsg, setReminderSuccessMsg] = useState("");
+
   
   // Fetch the reminder on load
   useEffect(() => {
@@ -61,17 +65,24 @@ export default function Dashboard() {
       await axios.post("https://studio-bd.onrender.com/api/reminder", {
         text: reminderText,
       });
-      
-      setReminderText("");
-      setReminderSuccessMsg("✅ Reminder added successfully!");
+  
+      setReminderSuccessMsg("✅ Reminder saved!");
+      setReminderEditMode(false); // ← switch back to view mode
       setTimeout(() => setReminderSuccessMsg(""), 2000);
     } catch (error) {
-      console.error("Error adding reminder:", error);
-      alert("Failed to add reminder.");
+      console.error("Error saving reminder:", error);
+      setReminderErrorMsg("❌ Failed to save reminder.");
     }
   };
   
+
+  useEffect(() => {
+    if (reminderEditMode) {
+      document.querySelector(".edit-reminder input")?.focus();
+    }
+  }, [reminderEditMode]);
   
+
   
 const handleQAChange = (e) => {
   const { name, value } = e.target;
@@ -187,18 +198,32 @@ fetchProjects();
      {reminderSuccessMsg && (
         <p className="floating-success">{reminderSuccessMsg}</p>
       )}
+      {reminderErrorMsg && (
+        <p className="floating-error">{reminderErrorMsg}</p>
+      )}
       {/* Reminder Section */}
-      <form onSubmit={handleAddReminder}>
-  <textarea
-    value={reminderText}
-    onChange={handleReminderChange}
-    placeholder="Enter your reminder"
-    required
-  />
-  <button type="submit" className="reminder-submit">
-    Add Reminder
-  </button>
-</form>
+      <div className="reminder-bar">
+  {reminderEditMode ? (
+    <div className="edit-reminder">
+      <input
+        type="text"
+        value={reminderText}
+        onChange={handleReminderChange}
+        placeholder="Enter reminder"
+      />
+      <button onClick={handleAddReminder}>Save</button>
+    </div>
+    
+  ) : (
+    
+    <div className="display-reminder">
+      <span><strong>Reminder:</strong> {reminderText || "No reminder set"}</span>
+      <FaEdit className="edit-icon" onClick={() => setReminderEditMode(true)} />
+    </div>
+  )}
+  </div>
+
+
 
 
       <h2 className="dashboard-header">Dashboard</h2>
