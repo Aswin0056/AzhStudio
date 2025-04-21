@@ -7,13 +7,17 @@ import "../styles.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [stayLoggedIn, setStayLoggedIn] = useState(false); // ✅ new
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // ✅ added
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await axios.post(
         "https://studio-bd.onrender.com/api/login",
@@ -25,20 +29,23 @@ export default function Login() {
 
       const { token, user } = response.data;
 
-      // Store token and username
-      localStorage.setItem("token", token);
-      localStorage.setItem("username", user.username);
+      // ✅ Store token based on stayLoggedIn
+      const storage = stayLoggedIn ? localStorage : sessionStorage;
+      storage.setItem("token", token);
+      storage.setItem("username", user.username);
 
-      setSuccessMessage("Logged in successfully ✅"); // ✅ show success
+      setSuccessMessage("Logged in successfully ✅");
       setError("");
+      setLoading(false);
 
-      // Redirect after short delay
       setTimeout(() => {
         navigate("/dashboard");
       }, 2000);
     } catch (err) {
-      setError("Invalid email or password ❌");
-      setSuccessMessage(""); // clear any previous success
+      const serverMessage = err.response?.data?.message || "Invalid email or password ❌";
+      setError(serverMessage);
+      setSuccessMessage("");
+      setLoading(false);
     }
   };
 
@@ -51,12 +58,7 @@ export default function Login() {
 
       {/* Message boxes */}
       {error && <div className="floating-error">{error}</div>}
-     {successMessage && (
-  <div className="floating-success">
-    {successMessage}
-  </div>
-)}
-
+      {successMessage && <div className="floating-success">{successMessage}</div>}
 
       <input
         className="login-input"
@@ -74,9 +76,27 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <button className="login-button" type="submit">
-        Login
+
+      {/* ✅ Stay logged in checkbox */}
+      <label className="stay-logged-in">
+        <input
+          type="checkbox"
+          checked={stayLoggedIn}
+          onChange={(e) => setStayLoggedIn(e.target.checked)}
+        />
+        Stay logged in
+      </label>
+
+      <button className="login-button" type="submit" disabled={loading}>
+        {loading ? (
+          <span className="spinner-with-text">
+            <span className="spinner"></span> Logging in...
+          </span>
+        ) : (
+          "Login"
+        )}
       </button>
+
       <p className="owner-label">
         Created by <span>Aswin</span>
       </p>

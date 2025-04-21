@@ -34,6 +34,47 @@ body {
     color: black;
   }
   
+  
+  .navbar-dropdown a {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .navbar-dropdown button {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    font-size: 1rem;
+    background-color: white;
+  }
+
+  .navbar-dropdown button:hover {
+    background-color: #f3f4f6;
+    color: goldenrod;
+  }
+  
+  .navbar-dropdown a:hover {
+    background-color: #f3f4f6;
+    color: goldenrod;
+  }
+ 
+  @keyframes dropdownFadeSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
   .navbar-dropdown {
     display: none;
     flex-direction: column;
@@ -45,22 +86,19 @@ body {
     border-radius: 8px;
     padding: 1rem;
     z-index: 999;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
   
-  .navbar-dropdown a {
-    padding: 0.5rem 1rem;
-    text-align: left;
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
+  .navbar-dropdown.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    animation: dropdownFadeSlide 0.3s ease forwards;
   }
-  
-  .navbar-dropdown a:hover {
-    background-color: #f3f4f6;
-    color: goldenrod;
-  }
- 
-  
+
   /* styles.css */
 
 /* Home page styling */
@@ -181,6 +219,87 @@ body {
     animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
     pointer-events: none;
   }
+
+  .stay-logged-in {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0.5rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+
+
+  
+  /* Spinner animation */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-top: 3px solid goldenrod;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.spinner-with-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Message boxes */
+.floating-error {
+  background-color: #ffe6e6;
+  color: #d8000c;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+  animation: floatIn 0.3s ease-in;
+}
+
+.floating-success {
+  background-color: #e6ffed;
+  color: #2e7d32;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+  animation: floatIn 0.3s ease-in;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: dim button when disabled */
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
   
   
   @keyframes fadein {

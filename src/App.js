@@ -4,8 +4,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import PrivateRoute from "./components/PrivateRoute"; // ✅ Adjust path if needed
 
 function App() {
+
   return (
       <Router>
         <Navbar />
@@ -13,7 +15,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={ <Dashboard /> }/>
+            {/* ✅ Protected Route */}
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
         </Routes>
       </Router>
   );
