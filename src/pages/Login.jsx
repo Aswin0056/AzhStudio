@@ -7,7 +7,7 @@ import "../styles.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [stayLoggedIn, setStayLoggedIn] = useState(false); // ✅ new
+  const [stayLoggedIn, setStayLoggedIn] = useState(false);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function Login() {
 
       const { token, user } = response.data;
 
-      // ✅ Store token based on stayLoggedIn
+      // ✅ Store token based on stayLoggedIn checkbox
       const storage = stayLoggedIn ? localStorage : sessionStorage;
       storage.setItem("token", token);
       storage.setItem("username", user.username);
