@@ -26,7 +26,11 @@ body {
     cursor: pointer;
   }
   
-  
+  .logout-button{
+    border: none;
+    background-color: white;
+    font-size: 1rem;
+  }
 
   /* styles.css */
 
