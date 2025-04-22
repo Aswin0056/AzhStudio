@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 Import icons
 import logo from "../images/logo.png";
 import "../styles.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // 👈 Toggle state
   const [stayLoggedIn, setStayLoggedIn] = useState(false);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -19,17 +21,12 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "https://studio-bd.onrender.com/api/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("https://studio-bd.onrender.com/api/login", {
+        email,
+        password,
+      });
 
       const { token, user } = response.data;
-
-      // ✅ Store token based on stayLoggedIn checkbox
       const storage = stayLoggedIn ? localStorage : sessionStorage;
       storage.setItem("token", token);
       storage.setItem("username", user.username);
@@ -56,7 +53,6 @@ export default function Login() {
       </center>
       <h2 className="login-title">Login</h2>
 
-      {/* Message boxes */}
       {error && <div className="floating-error">{error}</div>}
       {successMessage && <div className="floating-success">{successMessage}</div>}
 
@@ -68,16 +64,24 @@ export default function Login() {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <input
-        className="login-input"
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
 
-      {/* ✅ Stay logged in checkbox */}
+      <div className="password-wrapper">
+        <input
+          className="login-input"
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <span
+          className="toggle-password"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
+
       <label className="stay-logged-in">
         <input
           type="checkbox"

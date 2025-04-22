@@ -32,6 +32,23 @@ body {
     font-size: 1rem;
   }
 
+
+  .password-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 39%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+  }
+  
+
   /* styles.css */
 
 /* Navbar default (desktop) */
