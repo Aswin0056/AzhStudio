@@ -31,7 +31,7 @@ export default function Dashboard() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("https://studio-bd.onrender.com/api/projects");
+      const res = await axios.get("http://localhost:5000/api/projects");
       console.log("Fetched projects:", res.data); // ← check what you actually receive
       setProjects(res.data.projects); // if backend returns { projects: [...] }
     } catch (err) {
@@ -45,7 +45,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchReminder = async () => {
       try {
-        const res = await axios.get("https://studio-bd.onrender.com/api/reminder");
+        const res = await axios.get("http://localhost:5000/api/reminder");
         setReminderText(res.data.reminder.reminder_text || "");
       } catch (err) {
         console.error("Error fetching reminder", err);
@@ -62,7 +62,7 @@ export default function Dashboard() {
   const handleAddReminder = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://studio-bd.onrender.com/api/reminder", {
+      await axios.post("http://localhost:5000/api/reminder", {
         text: reminderText,
       });
   
@@ -92,7 +92,7 @@ const handleQAChange = (e) => {
   const handleAddQA = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://studio-bd.onrender.com/api/ai-data", newQA); // Change this URL to your AI database endpoint
+      await axios.post("http://localhost:5000/api/ai-data", newQA); // Change this URL to your AI database endpoint
       setNewQA({ question: "", answer: "" });
       alert("Question and answer added successfully!");
     } catch (err) {
@@ -103,7 +103,7 @@ const handleQAChange = (e) => {
 
   const fetchExpensaverData = async () => {
     try {
-      const res = await axios.get("https://es-backend-1.onrender.com/api/expensaver-data");
+      const res = await axios.get("http://localhost:5000/api/expensaver-data");
       setExpensaver({
         userCount: res.data.userCount,
         expenseCount: res.data.expenseCount,
@@ -151,7 +151,7 @@ const handleAddProject = async (e) => {
   console.log('Sending new project:', newEntry); // Log the data being sent
 
   try {
-    const res = await axios.post("https://studio-bd.onrender.com/api/projects", newEntry);
+    const res = await axios.post("http://localhost:5000/api/projects", newEntry);
     console.log("Response from backend:", res.data); // Log the backend response
 
     setProjects((prevProjects) => [res.data, ...prevProjects]); // Add project to state
@@ -168,7 +168,7 @@ setTimeout(() => setProjectSuccessMsg(""), 2000);
 
 const handleDeleteProject = async (id) => {
   try {
-    await axios.delete(`https://studio-bd.onrender.com/api/projects/${id}`);
+    await axios.delete(`http://localhost:5000/api/projects/${id}`);
     setProjects(projects.filter((project) => project.id !== id));
     setProjectDeleteMsg("🗑️ Project deleted successfully!"); // Success message
   } catch (err) {
