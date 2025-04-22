@@ -736,6 +736,8 @@ label {
         width: 90%;
     }
 
+
+
     .project-list {
         grid-template-columns: 1fr;
     }
@@ -745,7 +747,8 @@ label {
     }
 
     .dashboard-welcome {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        color: goldenrod;
     }
 
     .project-card {
