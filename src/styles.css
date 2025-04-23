@@ -1000,7 +1000,11 @@ label {
   .about-page h2 {
     font-size: 1.8rem;
   }
-}
+
+  .comment-box input,
+  .comment-box textarea {
+    width: 90%;
+  }
 
 .users-logo {
   width: 25px;
@@ -1013,10 +1017,19 @@ label {
   font-size: 0.9rem;
 }
 
+.contact-form input,
+.contact-form textarea {
+  width: 89%;
+}
+
 /* Add to styles.css */
 footer{
   font-weight: bold;
   text-transform: uppercase;
 }
 
+footer p{
+  font-size: 0.9rem;
+}
 
+}

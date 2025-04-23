@@ -18,42 +18,45 @@ export default function Footer() {
         marginBottom: "1rem",
       }}>
         <p>© {new Date().getFullYear()}<strong style={{ color: 'goldenrod' }}> Azh</strong><strong style={{ color: 'black' }}>Studio</strong>. All rights reserved.</p>
-        <p style={{ fontSize: "1rem", opacity: 0.75 }}>
+        <p style={{ fontSize: "0.5rem", opacity: 0.75 }}>
           Built by Aswin with 🤍 & creativity.
         </p>
       </div>
 
       <div style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "1.5rem",
-        marginTop: "1.5rem",
-      }}>
-        <Link to="/about" style={{
-          color: "#fff",
-          textDecoration: "none",
-          padding: "0.5rem 1.2rem",
-          background: "#333",
-          borderRadius: "30px",
-          transition: "all 0.3s ease",
-        }} 
-        onMouseOver={(e) => e.target.style.background = "#444"} 
-        onMouseOut={(e) => e.target.style.background = "#333"}>
-          About
-        </Link>
-        <Link to="/contact" style={{
-          color: "#fff",
-          textDecoration: "none",
-          padding: "0.5rem 1.2rem",
-          background: "#333",
-          borderRadius: "30px",
-          transition: "all 0.3s ease",
-        }}
-        onMouseOver={(e) => e.target.style.background = "#444"} 
-        onMouseOut={(e) => e.target.style.background = "#333"}>
-          Contact
-        </Link>
-      </div>
+  display: "flex",
+  justifyContent: "center",
+  gap: "2rem",
+  marginTop: "2rem",
+}}>
+  <Link to="/about" style={{
+    color: "#fff",
+    textDecoration: "none",
+    padding: "0.70rem 1.0rem", // increased padding
+    fontSize: "0.7rem", // larger text
+    background: "#333",
+    borderRadius: "40px", // smoother look
+    transition: "all 0.3s ease",
+  }} 
+  onMouseOver={(e) => e.target.style.background = "#444"} 
+  onMouseOut={(e) => e.target.style.background = "#333"}>
+    About
+  </Link>
+  <Link to="/contact" style={{
+    color: "#fff",
+    textDecoration: "none",
+    padding: "0.70rem 1.0rem", // increased padding
+    fontSize: "0.7rem",
+    background: "#333",
+    borderRadius: "40px",
+    transition: "all 0.3s ease",
+  }}
+  onMouseOver={(e) => e.target.style.background = "#444"} 
+  onMouseOut={(e) => e.target.style.background = "#333"}>
+    Contact
+  </Link>
+</div>
+
     </footer>
   );
 }

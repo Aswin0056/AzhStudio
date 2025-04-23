@@ -74,7 +74,7 @@ export default function Contact() {
         />
         <button type="submit">Send Message</button>
       </form>
-      <p className="owner-label" style={{marginTop: "100px"}}>
+      <p className="owner-label" style={{marginTop: "200px"}}>
         Created by <span>Aswin</span>
       </p>
     </div>
