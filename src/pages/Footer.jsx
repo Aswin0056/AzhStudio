@@ -1,19 +1,59 @@
 // src/components/Footer.jsx
-import "../styles.css"
+import { Link } from "react-router-dom";
+import "../styles.css";
+
 export default function Footer() {
-    return (
-      <footer style={{
-        backgroundColor: "rgba(0, 0, 0, 0.79)",
-        color: "#fff",
-        padding: "1rem",
-        textAlign: "center",
-        marginTop: "3rem",
+  return (
+    <footer style={{
+      background: "linear-gradient(145deg, #1a1a1a, #444)",
+      color: "#fff",
+      padding: "2rem",
+      textAlign: "center",
+      borderTop: "2px solid #fff",
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+      marginTop: "3rem",
+    }}>
+      <div style={{
+        fontSize: "1.2rem",
+        marginBottom: "1rem",
       }}>
-        <p>© {new Date().getFullYear()}<strong style={{"color":'black'}}> Azh</strong><strong style={{"color":'goldenrod'}}>Studio</strong>. All rights reserved.</p>
-        <p style={{ fontSize: "0.9rem", opacity: 0.7 }}>
+        <p>© {new Date().getFullYear()}<strong style={{ color: 'goldenrod' }}> Azh</strong><strong style={{ color: 'black' }}>Studio</strong>. All rights reserved.</p>
+        <p style={{ fontSize: "1rem", opacity: 0.75 }}>
           Built by Aswin with 🤍 & creativity.
         </p>
-      </footer>
-    );
-  }
-  
+      </div>
+
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: "1.5rem",
+        marginTop: "1.5rem",
+      }}>
+        <Link to="/about" style={{
+          color: "#fff",
+          textDecoration: "none",
+          padding: "0.5rem 1.2rem",
+          background: "#333",
+          borderRadius: "30px",
+          transition: "all 0.3s ease",
+        }} 
+        onMouseOver={(e) => e.target.style.background = "#444"} 
+        onMouseOut={(e) => e.target.style.background = "#333"}>
+          About
+        </Link>
+        <Link to="/contact" style={{
+          color: "#fff",
+          textDecoration: "none",
+          padding: "0.5rem 1.2rem",
+          background: "#333",
+          borderRadius: "30px",
+          transition: "all 0.3s ease",
+        }}
+        onMouseOver={(e) => e.target.style.background = "#444"} 
+        onMouseOut={(e) => e.target.style.background = "#333"}>
+          Contact
+        </Link>
+      </div>
+    </footer>
+  );
+}
