@@ -1067,3 +1067,90 @@ footer p{
 .comment-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+
+@media screen and (max-width: 768px) {
+  .comment-table,
+  .comment-table thead,
+  .comment-table tbody,
+  .comment-table th,
+  .comment-table td,
+  .comment-table tr {
+    display: block;
+    width: 95%;
+  }
+
+  .comment-table thead {
+    display: none;
+  }
+
+  .comment-table tr {
+    margin-bottom: 1rem;
+   
+    padding: 0.5rem;
+   
+  }
+
+  .comment-table td {
+    position: relative;
+    padding-left: 10%;
+    text-align: left;
+  }
+
+  .comment-table td::before {
+    position: absolute;
+    top: 0;
+    left: 0.75rem;
+    width: 45%;
+    padding-right: 1rem;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+}
+
+
+
+/* Hide/Unhide Button Styles */
+.comment-toggle-btn {
+  background-color: #f0f0f0;
+  border: none;
+  color: #444;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.comment-toggle-btn:hover {
+  background-color: #e0e0e0;
+  color: #222;
+}
+
+
+.hide-toggle-btn {
+  background-color: #e6e6e6;
+  border: none;
+  color: #333;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hide-toggle-btn:hover {
+  background-color: #d4d4d4;
+}
+
+
+/* Default for small screens */
+.dashboard-items-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically on small screens */
+  gap: 2rem;
+}
+
+
