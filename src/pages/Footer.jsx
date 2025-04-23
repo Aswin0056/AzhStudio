@@ -14,11 +14,11 @@ export default function Footer() {
       marginTop: "3rem",
     }}>
       <div style={{
-        fontSize: "1.2rem",
+        fontSize: "1.0rem",
         marginBottom: "1rem",
       }}>
         <p>© {new Date().getFullYear()}<strong style={{ color: 'goldenrod' }}> Azh</strong><strong style={{ color: 'black' }}>Studio</strong>. All rights reserved.</p>
-        <p style={{ fontSize: "0.5rem", opacity: 0.75 }}>
+        <p style={{ fontSize: "0.6rem", opacity: 0.75 }}>
           Built by Aswin with 🤍 & creativity.
         </p>
       </div>

@@ -1033,3 +1033,25 @@ footer p{
 }
 
 }
+
+.comment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.comment-table th,
+.comment-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.comment-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.comment-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
