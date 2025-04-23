@@ -1008,6 +1008,7 @@ label {
 
 .users-logo {
   width: 25px;
+  height: auto;
   margin-right: 10px;
 }
 
@@ -1034,6 +1035,17 @@ footer p{
 
 }
 
+.comment-name{
+  margin-top: -25px;
+  margin-left: 30px;
+  font-size: 0.9rem;
+}
+
+.users-logo {
+  width: 25px;
+  height: auto;
+  margin-right: 10px;
+}
 .comment-table {
   width: 100%;
   border-collapse: collapse;
