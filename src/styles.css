@@ -1398,3 +1398,43 @@ footer p{
 .confirm-buttons button:last-child {
   background-color: #ccc;
 }
+
+
+.about-container {
+  max-width: 850px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-container:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #333;
+}
+
+.about-text {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about-text strong {
+  color: #111;
+  font-weight: 600;
+}
+
+.about-container p:last-child {
+  margin-bottom: 0;
+}

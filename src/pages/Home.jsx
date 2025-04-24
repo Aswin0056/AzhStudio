@@ -84,6 +84,22 @@ export default function Home() {
         </div>
       </div>
 
+{/* 🧑‍💻 About Us Section */}
+<div className="about-container">
+  <h3 className="about-title">✨ About Azh Studio</h3>
+  <p className="about-text">
+    Welcome to <strong>Azh Studio</strong> — a place where creativity meets technology. We’re a team of passionate developers, designers, and dreamers who build powerful web and AI applications to make everyday life easier and more productive.
+  </p>
+  <p className="about-text">
+    Our mission is to craft clean, intuitive, and impactful digital experiences. From managing expenses with <strong>Expensaver</strong> 💸 to engaging in smart conversations with <strong>LIX</strong> 🤖, every project we launch is driven by innovation and a love for solving real problems.
+  </p>
+  <p className="about-text">
+    Stay tuned for more tools and projects — we’re just getting started 🚀
+  </p>
+</div>
+
+
+
       {/* 💬 Comments Section */}
       <div className="comments-section" style={{ marginTop: "3rem", maxWidth: "600px", marginInline: "auto" }}>
         <h3>💬 Comments</h3>

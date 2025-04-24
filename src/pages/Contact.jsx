@@ -74,6 +74,7 @@ export default function Contact() {
         />
         <button type="submit">Send Message</button>
       </form>
+      <p style={{fontSize: "0.7rem"}}>📩 Please enter the correct contact information. You’ll receive an email from us shortly! 😊</p>
       <p className="owner-label" style={{marginTop: "200px"}}>
         Created by <span>Aswin</span>
       </p>
