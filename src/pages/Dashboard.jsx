@@ -29,10 +29,10 @@ export default function Dashboard() {
     answer: "",
   });
 
-  const [expensaver, setExpensaver] = useState({
-    userCount: 0,
-    expenseCount: 0,
-  });
+  // const [expensaver, setExpensaver] = useState({
+  //   userCount: 0,
+  //   expenseCount: 0,
+  // });
 
   const fetchProjects = async () => {
     try {
@@ -113,24 +113,24 @@ export default function Dashboard() {
     try {
       await axios.post("https://studio-bd.onrender.com/api/aiData", newQA);
       setNewQA({ question: "", answer: "" });
-      alert("Question and answer added successfully!");
+      setProjectSuccessMsg("Question and answer added successfully!");
     } catch (err) {
       console.error("Error adding QA pair", err);
       alert("Failed to add question and answer.");
     }
   };
 
-  const fetchExpensaverData = async () => {
-    try {
-      const res = await axios.get("https://studio-bd.onrender.com/api/expensaver-data");
-      setExpensaver({
-        userCount: res.data.userCount,
-        expenseCount: res.data.expenseCount,
-      });
-    } catch (err) {
-      console.error("Error fetching Expensaver data", err);
-    }
-  };
+  // const fetchExpensaverData = async () => {
+  //   try {
+  //     const res = await axios.get("https://studio-bd.onrender.com/api/expensaver-data");
+  //     setExpensaver({
+  //       userCount: res.data.userCount,
+  //       expenseCount: res.data.expenseCount,
+  //     });
+  //   } catch (err) {
+  //     console.error("Error fetching Expensaver data", err);
+  //   }
+  // };
 
   const handleProjectChange = (e) => {
     const { name, value } = e.target;
@@ -176,7 +176,7 @@ export default function Dashboard() {
     const storedUsername = sessionStorage.getItem("username") || localStorage.getItem("username");
     setUsername(storedUsername);
 
-    fetchExpensaverData();
+    // fetchExpensaverData();
     fetchProjects();
     fetchComments();
   }, [navigate]);
@@ -240,21 +240,21 @@ export default function Dashboard() {
     <div className="project-cards-container">
       {Array.isArray(projects) && projects.map((project) => (
         <div key={project._id} className="project-card">
-          <img src={project.imageUrl} alt={project.name} className="project-card img" />
-          <h3 className="project-card h3">{project.name}</h3>
+          <img src={project.imageUrl} alt={project.name} className="project-card-img" />
+          <h3>{project.name}</h3>
           <p className={`ping-status ${project.status}`}>Status: {project.status}</p>
           <button onClick={() => handleDeleteProject(project._id)} className="delete-button">Delete</button>
         </div>
       ))}
     </div>
 
-    <div className="expensaver-card project-card">
+    {/* <div className="expensaver-card project-card">
       <h3>Expensaver</h3>
       <div className="expensaver-card details">
         <p className="expensaver-detail">Users: {expensaver.userCount}</p>
         <p className="expensaver-detail">Expenses: {expensaver.expenseCount}</p>
       </div>
-    </div>
+    </div> */}
   </div>
 
   <h3 className="text-2xl font-bold mb-4">User Comments</h3>
