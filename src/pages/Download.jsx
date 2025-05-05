@@ -2,13 +2,13 @@ import "../styles.css";
 
 export default function Download() {
   const apps = [
-    { title: "CF", size: "79 MB", version: "1.0", link: "/downloads/CF.apk" },
+    { title: "CF", size: "81 MB", version: "1.0", link: "/downloads/CF.apk" },
     { title: "Expensaver", size: "9.5 MB", version: "1.0", link: "/downloads/app-debug.apk" },
     { title: "LIX AI", size: "78 MB", version: "1.0", link: "/downloads/LIX.apk" },
   ];
 
   return (
-    <div className="contact-container">
+    <div className="download-container">
       <h2>Download Our Apps Here</h2>
       <h4>Android - APK</h4>
       <table className="app-table">
