@@ -55,6 +55,19 @@ export default function Footer() {
   onMouseOut={(e) => e.target.style.background = "#333"}>
     Contact
   </Link>
+  <Link to="/download" style={{
+    color: "#fff",
+    textDecoration: "none",
+    padding: "0.70rem 1.0rem", // increased padding
+    fontSize: "0.7rem",
+    background: "#333",
+    borderRadius: "40px",
+    transition: "all 0.3s ease",
+  }}
+  onMouseOver={(e) => e.target.style.background = "#444"} 
+  onMouseOut={(e) => e.target.style.background = "#333"}>
+    DOA
+  </Link>
 </div>
 
     </footer>

@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute"; // ✅ Adjust path if needed
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Download from "./pages/Download";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/download" element={<Download />} />
             {/* ✅ Protected Route */}
         <Route
           path="/dashboard"
